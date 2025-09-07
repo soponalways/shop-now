@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 export default function LoginPage() {
     const [form, setForm] = useState({ email: "", password: "" });
@@ -16,7 +16,7 @@ export default function LoginPage() {
             password: form.password,
         });
         if (result.error) {
-            alert(result.error);
+            toast.error(result.error);
         } else {
             toast.success("You Have Successfully Login");
             redirect('/');
@@ -45,7 +45,9 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-4">
-                <button onClick={() => signIn("google")} className="bg-red-600 text-white py-2 w-full rounded-xl cursor-pointer md:rounded-2xl">
+                <button onClick={() => {
+                    signIn("google", { callbackUrl: "/" });
+                }} className="bg-red-600 text-white py-2 w-full rounded-xl cursor-pointer md:rounded-2xl">
                     Login with Google
                 </button>
             </div>

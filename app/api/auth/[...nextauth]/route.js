@@ -5,7 +5,6 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import bcrypt from "bcrypt";
 import dbConncect, { clientPromise, collections } from "@/lib/MongoDb/dbConnect";
 import { signIn } from "next-auth/react";
-import toast from "daisyui/components/toast";
 
 export const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
@@ -36,13 +35,11 @@ export const authOptions = {
                     const query = { email: user.email }
                     await usersCollection.updateOne(query, updatedUser); 
                 }
-                if (!user) {
-                    return toast.error("No User Found");
-                }
+                if (!user) throw new Error("No User Found");
+
                 const isValid = await bcrypt.compare(credentials.password, user.password);
-                if (!isValid) {
-                    return toast.error("Invalid Password");
-                }
+
+                if (!isValid) throw new Error("Invalid Password");
 
                 return { id: user._id.toString(), name: user.name, email: user.email };
             },

@@ -58,7 +58,7 @@ export default function RegisterPage() {
                 <button type="submit" className="bg-gray-300 hover:bg-gray-400 cursor-pointer rounded-xl md:rounded-2xl py-2">Register</button>
             </form>
             <div className="mt-4">
-                <button onClick={() => signIn("google")} className="bg-red-600 text-white py-2 w-full rounded-xl cursor-pointer md:rounded-2xl">
+                <button onClick={() => signIn("google", { callbackUrl: "/" })} className="bg-red-600 text-white py-2 w-full rounded-xl cursor-pointer md:rounded-2xl">
                     Continue with Google
                 </button>
             </div>
