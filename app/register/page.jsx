@@ -63,7 +63,7 @@ export default function RegisterPage() {
                 </button>
             </div>
 
-            <p className="py-2">Already have an account Please <Link href={'/register'} className="underline text-blue-600 ">Login </Link></p>
+            <p className="py-2">Already have an account Please <Link href={'/login'} className="underline text-blue-600 ">Login </Link></p>
 
             {message && <p className="mt-3">{message}</p>}
         </div>
