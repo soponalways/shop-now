@@ -8,7 +8,7 @@ export default function Home() {
         Not signed in <br />
         <button onClick={() => {
           toast.success("Button clicked");
-        }}>Sign in</button>
+        }} className="btn btn-primary">Sign in</button>
       </>
    </div>
   );
