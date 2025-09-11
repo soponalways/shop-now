@@ -81,7 +81,7 @@ export const authOptions = {
                     });
                 }
             }
-            return user;
+            return true;
         },
     },
 }

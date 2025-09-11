@@ -4,6 +4,7 @@ import StoreProvider from "./StoreProvider";
 import AuthProvider from "@/context/Providers/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import NavBar from "../components/NavBar/NavBar";
+import SessionProviderNextAuth from "@/context/Providers/SessionProvider";
 
 
 const geistSans = Geist({
@@ -27,17 +28,19 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <StoreProvider>
-          <AuthProvider>
-            <header>
-              <NavBar />
-            </header>
-            <main>
-              {children}
-            </main>
-            <footer></footer>
-          </AuthProvider>
-        </StoreProvider>
+        <SessionProviderNextAuth>
+          <StoreProvider>
+            <AuthProvider>
+              <header className="shadow-sm">
+                <NavBar />
+              </header>
+              <main>
+                {children}
+              </main>
+              <footer></footer>
+            </AuthProvider>
+          </StoreProvider>
+        </SessionProviderNextAuth>
         <Toaster />
       </body>
     </html>
